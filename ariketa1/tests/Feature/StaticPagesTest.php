@@ -9,7 +9,7 @@ class StaticPagesTest extends TestCase
 {
     public function testHomePage()
     {
-        $respose = $this->get(route('home'));
+        $respose = $this->get(uri: route('home'));
         $respose->assertStatus(200);
         $respose->assertSee('Gure Ikastetxea');
         $respose->assertSee('Ongi etorri');
