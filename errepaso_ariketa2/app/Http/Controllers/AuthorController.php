@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('authors.index', ['authors' => Author::all()]);
+        $search = $request->input('search', '');
+        
+        if ($search) {
+            $authors = Author::where('izena', 'like', '%' . $search . '%')
+                ->orWhere('abizenak', 'like', '%' . $search . '%')
+                ->get();
+        } else {
+            $authors = Author::all();
+        }
+        
+        return view('authors.index', [
+            'authors' => $authors,
+            'search' => $search
+        ]);
     }
 
     public function show(Author $author)

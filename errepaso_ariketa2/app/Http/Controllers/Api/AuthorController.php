@@ -7,6 +7,17 @@ use App\Models\Author;
 
 class AuthorController extends Controller
 {
+    public function index()
+    {
+        $authors = Author::all();
+        return response()->json($authors);
+    }
+
+    public function show(Author $author)
+    {
+        return response()->json($author);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
