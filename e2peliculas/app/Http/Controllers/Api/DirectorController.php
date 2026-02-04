@@ -17,7 +17,7 @@ class DirectorController extends Controller{
         return response()->json($director, 201);
     }
 
-   /* public function update(Request $request, Director $director)
+    public function update(Request $request, Director $director)
     {
         $validated = $request->validate([
             'nombre'=>'required|string|max:100',
@@ -27,7 +27,7 @@ class DirectorController extends Controller{
         $director->update($validated);
 
         return response()->json($director, 200);
-    }*/
+    }
 
     public function destroy($id){
         $director = Director::findOrFail($id);
